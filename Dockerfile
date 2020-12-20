@@ -22,7 +22,7 @@ COPY ./front   ../front
 
 RUN apk add --update nodejs npm
 
-RUN cd front && npm install -y && npm run build --mode production
+RUN cd ../front && npm install -y && npm run build
 # Expose port 8080 to the outside world
 EXPOSE 3000
 
