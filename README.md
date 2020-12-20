@@ -6,8 +6,7 @@
 #####how to user golang and vue together
     https://www.freecodecamp.org/news/how-i-set-up-a-real-world-project-with-go-and-vue/
 
-## run
-###build
+## build
     docker build -t go-app .
-###run
+## run
     docker run -it -d -p 3000:3000 --name go-container go-app
