@@ -3,7 +3,7 @@
 
 
 ## front vue.js 
-#####how to user golang and vue together
+how to user golang and vue together
     https://www.freecodecamp.org/news/how-i-set-up-a-real-world-project-with-go-and-vue/
 
 ## build
