@@ -1,22 +1,38 @@
 package server
 
 import (
-	"github.com/gin-gonic/gin"
+	"github.com/VusalShahbazov/chat-app/app/pkg/models"
 	"github.com/gin-contrib/static"
+	"github.com/gin-gonic/gin"
 )
 
+type Server struct {
+	Handler *gin.Engine
+	StaticFilePath string
+}
 
 func Run() error {
-	mux := gin.Default()
-
-	v1 := mux.Group("/api/v1/")
-	{
-		v1.GET("/test" , func(context *gin.Context) {
-			context.JSON(200 , gin.H{"message":"ok"})
-		})
+	server := &Server{
+		Handler: gin.Default(),
+		StaticFilePath: "../front/dist",
 	}
 
-	mux.Use(static.Serve("/", static.LocalFile("../front/dist", false)))
+	//api routes
+	server.DefineRoutes()
 
-	return mux.Run(":4000")
+	//vue bundle
+	server.CreateStaticFileServer()
+
+	err := models.ConnectToDb()
+	if err != nil  {
+		return err
+	}
+
+	return server.Handler.Run(":4000")
 }
+
+
+func (s *Server) CreateStaticFileServer()  {
+	s.Handler.Use(static.Serve("/", static.LocalFile(s.StaticFilePath, false)))
+}
+
