@@ -1,0 +1,16 @@
+create table users (
+    id BIGINT(11)  UNSIGNED PRIMARY KEY NOT NULL,
+    email varchar(255) UNIQUE  NOT NULL,
+    password varchar(255) NOT NULL,
+    created_at timestamp default current_timestamp
+);
+
+create table rooms (
+   id BIGINT(11)  UNSIGNED PRIMARY KEY NOT NULL,
+   name varchar(255) NOT NULL
+);
+
+create table messages (
+   id BIGINT(11)  UNSIGNED PRIMARY KEY NOT NULL,
+   body TEXT NOT NULL
+);
