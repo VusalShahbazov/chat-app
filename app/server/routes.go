@@ -13,6 +13,5 @@ func (s *Server) DefineRoutes()  {
 			context.JSON(200 , gin.H{"message":"ok"})
 		})
 	}
-
 }
 
